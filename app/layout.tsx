@@ -1,14 +1,14 @@
-import './globals.css'
+import { Nunito } from "next/font/google";
+
 import Navbar from "./components/Navbar/Navbar";
-import ClientOnly from './components/ClientOnly';
+import LoginModal from './components/Modals/LoginModal';
+import RegisterModal from './components/Modals/RegisterModal';
 import Modal from './components/Modals/Modal';
 import ToasterProvider from './providers/ToasterProvider';
-import { Nunito } from "next/font/google";
-import RegisterModal from './components/Modals/RegisterModal';
-import LoginModal from './components/Modals/LoginModal';
+
+import './globals.css'
+import ClientOnly from './components/ClientOnly';
 import getCurrentUser from './actions/getCurrentUser';
-
-
 
 export const metadata = {
   title: 'Airbnb',
@@ -16,15 +16,16 @@ export const metadata = {
 }
 
 const font = Nunito({
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const currentUser = await getCurrentUser()
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={font.className}>
@@ -34,7 +35,9 @@ export default async function RootLayout({
           <RegisterModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
+
         {children}
+
       </body>
     </html>
   )
