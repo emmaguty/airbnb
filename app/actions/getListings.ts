@@ -8,7 +8,7 @@ export default async function getListings(
             orderBy: {
                 createdAt: 'desc'
             }
-        })
+        });
 
         const safeListings = listings.map((listing) => ({
             ...listing,

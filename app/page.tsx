@@ -2,9 +2,12 @@ import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import EmptyState from "./components/EmptyState";
 import Container from "./components/Container/Container";
-import ListingsCard from "./components/Listings/ListingsCard";
 import ListingCard from "./components/Listings/ListingsCard";
 import getCurrentUser from "./actions/getCurrentUser";
+
+interface HomeProps {
+  
+}
 
 export default async function Home() {
   const listings = await getListings();
